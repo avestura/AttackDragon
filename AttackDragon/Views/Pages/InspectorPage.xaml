@@ -59,18 +59,29 @@
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <GridSplitter Grid.Row="1" Width="5" Background="#2D3436" BorderThickness="0" />
-                <GridSplitter Grid.Row="3" Width="5" Background="#2D3436" BorderThickness="0" />
-                <TreeView Grid.Column="0" ItemsSource="{Binding InspectorTrees}">
+                <GridSplitter Grid.Column="1" Width="5" Background="#2D3436" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <GridSplitter Grid.Column="3" Width="5" Background="#2D3436" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <TreeView SelectedItemChanged="TreeView_SelectedItemChanged" Grid.Column="0" ItemsSource="{Binding InspectorTrees}">
                     <TreeView.ItemTemplate>
                         <HierarchicalDataTemplate ItemsSource="{Binding Children}" DataType="{x:Type model:InspectorTreeItem}">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding ImageSource}" Width="16"/>
-                                <TextBlock VerticalAlignment="Center" Margin="5 0 0 0" Text="{Binding Text}" />
+                                <TextBlock VerticalAlignment="Center" Margin="5 0 0 0" Text="{Binding Name}" />
                             </StackPanel>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
+                <ListView Grid.Column="2" ItemsSource="{Binding Methods}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:PropertyItem}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding ImageSource}" />
+                                <TextBlock Margin="5 0 0 0" Text="{Binding StandardName}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
             </Grid>
             <GridSplitter ResizeDirection="Rows" Background="#2D3436" BorderThickness="0"
                           Grid.Row="1" ShowsPreview="True" Height="5"

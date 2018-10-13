@@ -80,6 +80,7 @@
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Models\InspectorTreeItem.cs" />
     <Compile Include="ViewModels\InspectorViewModel.cs" />
+    <Compile Include="ViewModels\PropertyItem.cs" />
     <Compile Include="ViewModels\SampleViewModel.cs" />
     <Compile Include="Views\Animations\BlinkAnimations.cs" />
     <Compile Include="Views\Animations\MarginFadeAnimations.cs" />
@@ -168,6 +169,10 @@
     <Page Include="Views\Templates\GeneralTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Templates\ListViews\Global.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Templates\Menus\Global.xaml">
       <SubType>Designer</SubType>

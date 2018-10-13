@@ -9,9 +9,13 @@ namespace AttackDragon.Models
 {
     public class InspectorTreeItem
     {
-        public string Text { get; set; }
+        public string Name { get; set; }
 
         public ImageSource ImageSource { get; set; }
+
+        public bool ShowMethods { get; set; }
+
+        public string FullName { get; set; }
 
         public List<InspectorTreeItem> Children { get; set; }
     }

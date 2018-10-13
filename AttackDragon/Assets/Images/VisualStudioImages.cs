@@ -16,6 +16,12 @@ namespace AttackDragon.Assets.Images
 
         public static Lazy<ImageSource> Library => new Lazy<ImageSource>(GetImageByName());
 
+        public static Lazy<ImageSource> Method => new Lazy<ImageSource>(GetImageByName());
+
+        public static Lazy<ImageSource> Property => new Lazy<ImageSource>(GetImageByName());
+
+        public static Lazy<ImageSource> Event => new Lazy<ImageSource>(GetImageByName());
+
         private static Func<ImageSource> GetImageByName([CallerMemberName]string memberName = "")
         => () => (ImageSource)App.Current.Resources[$"VisualStudio.{memberName}"];
 
