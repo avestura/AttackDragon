@@ -1,6 +1,7 @@
 ﻿<Page x:Class="AttackDragon.Views.Pages.InspectorPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:model="clr-namespace:AttackDragon.Models"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:AttackDragon.Views.Pages"
@@ -13,7 +14,8 @@
     <Page.Resources>
         <vm:InspectorViewModel x:Key="FakeViewModel"
                                AssemblyName="AryanSoftware.Api"
-                               AssemblySize="200 KB"/>
+                               AssemblySize="200 KB"
+                               />
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -57,8 +59,18 @@
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <GridSplitter Grid.Row="1" />
-                <GridSplitter Grid.Row="3" />
+                <GridSplitter Grid.Row="1" Width="5" Background="#2D3436" BorderThickness="0" />
+                <GridSplitter Grid.Row="3" Width="5" Background="#2D3436" BorderThickness="0" />
+                <TreeView Grid.Column="0" ItemsSource="{Binding InspectorTrees}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}" DataType="{x:Type model:InspectorTreeItem}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding ImageSource}" Width="16"/>
+                                <TextBlock VerticalAlignment="Center" Margin="5 0 0 0" Text="{Binding Text}" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
             </Grid>
             <GridSplitter ResizeDirection="Rows" Background="#2D3436" BorderThickness="0"
                           Grid.Row="1" ShowsPreview="True" Height="5"

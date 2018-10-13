@@ -1,10 +1,13 @@
-﻿using System;
+﻿using AttackDragon.Assets.Images;
+using AttackDragon.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace AttackDragon.ViewModels
 {
@@ -13,6 +16,7 @@ namespace AttackDragon.ViewModels
 
         private string _assemblyName;
         private string _assemblySize;
+        private List<InspectorTreeItem> _inspectorTree;
 
         public string AssemblyName
         {
@@ -24,6 +28,12 @@ namespace AttackDragon.ViewModels
         {
             get => _assemblySize;
             set { _assemblySize = value; OnPropertyChanged(); }
+        }
+
+        public List<InspectorTreeItem> InspectorTrees
+        {
+            get => _inspectorTree;
+            set { _inspectorTree = value; OnPropertyChanged(); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

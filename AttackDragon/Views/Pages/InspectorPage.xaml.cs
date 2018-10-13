@@ -1,4 +1,6 @@
-﻿using AttackDragon.ViewModels;
+﻿using AttackDragon.Assets.Images;
+using AttackDragon.Models;
+using AttackDragon.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,8 +35,35 @@ namespace AttackDragon.Views.Pages
             DataContext = new InspectorViewModel
             {
                 AssemblyName = TargetAssembly.GetName().Name,
-                AssemblySize = $"{new FileInfo(TargetAssembly.Location).Length / 1024} KB"
+                AssemblySize = $"{new FileInfo(TargetAssembly.Location).Length / 1024} KB",
+                InspectorTrees = BuildTree(TargetAssembly)
             };
+        }
+
+        public List<InspectorTreeItem> BuildTree(Assembly assembly)
+        {
+            var root = new InspectorTreeItem
+            {
+                Text = assembly.GetName().Name,
+                ImageSource =
+                ((string.Equals(System.IO.Path.GetExtension(assembly.Location), ".exe", StringComparison.OrdinalIgnoreCase))
+                ? VisualStudioImages.Application.Value
+                : VisualStudioImages.Library.Value),
+                Children = new List<InspectorTreeItem>()
+            };
+
+            var tree = new List<InspectorTreeItem> { root };
+
+            foreach(Type type in assembly.GetTypes())
+            {
+                root.Children.Add(new InspectorTreeItem
+                {
+                    Text = type.Name,
+                    ImageSource = VisualStudioImages.Class.Value
+                });
+            }
+
+            return tree;
         }
     }
 }

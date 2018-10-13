@@ -37,6 +37,9 @@
                 <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Views/Templates/Buttons/Global.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Views/Templates/Menus/Global.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Views/Templates/Menus/MenuItems/Global.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Views/Templates/TreeViews/Global.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Views/Templates/TreeViews/TreeViewItems/Global.xaml" />
+
                 <!--#endregion-->
 
             </ResourceDictionary.MergedDictionaries>

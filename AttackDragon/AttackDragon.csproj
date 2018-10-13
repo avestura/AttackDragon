@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Assets\Images\VisualStudioImages.cs" />
     <Compile Include="Configurations\Configuration.cs" />
     <Compile Include="Configurations\ConfigurationConstants.cs">
       <DependentUpon>Configuration.cs</DependentUpon>
@@ -77,7 +78,7 @@
     </Compile>
     <Compile Include="Engines\CalculationEngine.cs" />
     <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="Models\SampleModel.cs" />
+    <Compile Include="Models\InspectorTreeItem.cs" />
     <Compile Include="ViewModels\InspectorViewModel.cs" />
     <Compile Include="ViewModels\SampleViewModel.cs" />
     <Compile Include="Views\Animations\BlinkAnimations.cs" />
@@ -173,6 +174,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Templates\Menus\MenuItems\Global.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Templates\TreeViews\Global.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Templates\TreeViews\TreeViewItems\Global.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
