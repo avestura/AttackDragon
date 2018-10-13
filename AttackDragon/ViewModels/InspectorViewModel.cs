@@ -7,8 +7,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace AttackDragon.ViewModels
@@ -20,6 +22,8 @@ namespace AttackDragon.ViewModels
         private string _assemblySize;
         private ObservableCollection<InspectorTreeItem> _inspectorTree;
         private ObservableCollection<PropertyItem> _methods;
+        private string _methodDetails;
+        public Visibility _methodDetailsVisibility;
 
         public string AssemblyName
         {
@@ -31,6 +35,18 @@ namespace AttackDragon.ViewModels
         {
             get => _assemblySize;
             set { _assemblySize = value; OnPropertyChanged(); }
+        }
+
+        public string MethodDetails
+        {
+            get => _methodDetails;
+            set { _methodDetails = value; OnPropertyChanged(); }
+        }
+
+        public Visibility MethodDetailsVisibility
+        {
+            get => _methodDetailsVisibility;
+            set { _methodDetailsVisibility = value; OnPropertyChanged(); }
         }
 
         public ObservableCollection<InspectorTreeItem> InspectorTrees

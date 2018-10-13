@@ -16,6 +16,7 @@
                                AssemblyName="AryanSoftware.Api"
                                AssemblySize="200 KB"
                                />
+
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -71,7 +72,19 @@
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
-                <ListView Grid.Column="2" ItemsSource="{Binding Methods}">
+                <ListView x:Name="MethodList" Grid.Column="2" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Methods}">
+                    <ListView.Resources>
+                        <ContextMenu x:Key="ItemContextMenu">
+                            <MenuItem Header="Run Test for..."  />
+                            <Separator />
+                            <MenuItem Header="Details..." />
+                        </ContextMenu>
+                    </ListView.Resources>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}" >
+                            <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate DataType="{x:Type vm:PropertyItem}">
                             <StackPanel Orientation="Horizontal">
@@ -80,8 +93,11 @@
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-
                 </ListView>
+                <StackPanel Visibility="{Binding MethodDetailsVisibility}" Margin="5" Grid.Column="4">
+                    <TextBlock FontWeight="Bold">Details:</TextBlock>
+                    <TextBlock Margin="0 10" Text="{Binding MethodDetails}" />
+                </StackPanel>
             </Grid>
             <GridSplitter ResizeDirection="Rows" Background="#2D3436" BorderThickness="0"
                           Grid.Row="1" ShowsPreview="True" Height="5"

@@ -107,7 +107,8 @@ namespace AttackDragon.Views.Pages
                     ViewModel.Methods.Add(new PropertyItem
                     {
                         ImageSource = VisualStudioImages.Property.Value,
-                        MethodInfo = method
+                        MethodInfo = method,
+                        ItemType = ItemType.Property
                     });
                 }
             }
@@ -119,17 +120,36 @@ namespace AttackDragon.Views.Pages
                     ViewModel.Methods.Add(new PropertyItem
                     {
                         ImageSource = VisualStudioImages.Event.Value,
-                        MethodInfo = method
+                        MethodInfo = method,
+                        ItemType = ItemType.Event
                     });
                 }
             }
-            else if(!ViewModel.Methods.Any(item => item.Name == method.Name))
+            else
             {
                 ViewModel.Methods.Add(new PropertyItem
                 {
                     ImageSource = VisualStudioImages.Method.Value,
-                    MethodInfo = method
+                    MethodInfo = method,
+                    ItemType = ItemType.Method
                 });
+            }
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (MethodList.SelectedItem is PropertyItem item)
+            {
+                ViewModel.MethodDetails =
+                    $"{item.ItemType.ToString()} {item.StandardName}\n\n" +
+                    $"IsGeneric: {item.MethodInfo.IsGenericMethod}\n" +
+                    $"IsAbstract: {item.MethodInfo.IsAbstract}\n";
+
+                ViewModel.MethodDetailsVisibility = Visibility.Visible;
+            }
+            else
+            {
+                ViewModel.MethodDetailsVisibility = Visibility.Collapsed;
             }
         }
 

@@ -13,10 +13,21 @@ namespace AttackDragon.ViewModels
     {
         public ImageSource ImageSource { get; set; }
 
-        public string Name => MethodInfo.Name;
+        private string GenericSignatre => (MethodInfo.IsGenericMethod) ? $"<{string.Join(", ", MethodInfo.GetGenericArguments().Select(c => c.Name))}>" : "";
+
+        private string MethodSignature => (ItemType == ItemType.Method) ? $"({string.Join(", ", MethodInfo.GetParameters().Select(c => c.ParameterType))})" : "";
+
+        public string Name => $"{MethodInfo.Name}{GenericSignatre}{MethodSignature}";
 
         public string StandardName => Name.MethodStandardName();
 
         public MethodInfo MethodInfo { get; set; }
+
+        public ItemType ItemType { get; set; }
+    }
+
+    public enum ItemType
+    {
+        Method, Event, Property
     }
 }

@@ -21,4 +21,36 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type ContextMenu}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Grid.IsSharedSizeScope" Value="true" />
+        <Setter Property="Foreground" Value="{StaticResource AttackDragon.SolidColorBrushes.MajestyGray}" />
+        <Setter Property="Background" Value="{StaticResource AttackDragon.SolidColorBrushes.MajestyDark}" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="HasDropShadow" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContextMenu}">
+                    <Border
+                        x:Name="Border"
+                        Background="#1B1B1C"
+                        BorderThickness="0.5">
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="#FF6C6C6C" />
+                        </Border.BorderBrush>
+                        <Border Padding="2">
+                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="true">
+                            <Setter TargetName="Border" Property="Padding" Value="0,3,0,3" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>
