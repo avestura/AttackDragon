@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AttackDragon.Views.Animations;
+using AttackDragon.Views.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,21 @@ namespace AttackDragon
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Frame Frame => this_Frame;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Frame_Navigated(object sender, NavigationEventArgs e)
+        {
+            this_Frame.MarginFadeInAnimation(new Thickness(20,0,0,0), new Thickness(0), TimeSpan.FromMilliseconds(500));
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this_Frame.Navigate(new SelectAssemblyPage(this_Frame));
         }
     }
 }

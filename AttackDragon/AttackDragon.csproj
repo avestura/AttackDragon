@@ -78,6 +78,7 @@
     <Compile Include="Engines\CalculationEngine.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Models\SampleModel.cs" />
+    <Compile Include="ViewModels\InspectorViewModel.cs" />
     <Compile Include="ViewModels\SampleViewModel.cs" />
     <Compile Include="Views\Animations\BlinkAnimations.cs" />
     <Compile Include="Views\Animations\MarginFadeAnimations.cs" />
@@ -86,8 +87,11 @@
     <Compile Include="Views\Controls\WaveCircle\WaveCircle.xaml.cs">
       <DependentUpon>WaveCircle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\SamplePage.xaml.cs">
-      <DependentUpon>SamplePage.xaml</DependentUpon>
+    <Compile Include="Views\Pages\InspectorPage.xaml.cs">
+      <DependentUpon>InspectorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SelectAssemblyPage.xaml.cs">
+      <DependentUpon>SelectAssemblyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PartialViews\Menus\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
@@ -111,6 +115,10 @@
     <Page Include="Assets\Fonts\Fonts.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\Images\MainIcons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Assets\Images\MenuIcons.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -136,9 +144,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Pages\SamplePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\Pages\InspectorPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\SelectAssemblyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PartialViews\Menus\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -148,9 +160,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Templates\Buttons\Global.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Templates\GeneralTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Templates\Menus\Global.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Templates\Menus\MenuItems\Global.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +195,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Assets\Fonts\FiraCode\FiraCode-Bold.ttf" />
+    <Resource Include="Assets\Fonts\FiraCode\FiraCode-Light.ttf" />
+    <Resource Include="Assets\Fonts\FiraCode\FiraCode-Medium.ttf" />
+    <Resource Include="Assets\Fonts\FiraCode\FiraCode-Regular.ttf" />
+    <Resource Include="Assets\Fonts\FiraCode\FiraCode-Retina.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

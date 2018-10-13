@@ -12,4 +12,7 @@
     <SolidColorBrush x:Key="HastiUI.SolidColorBrushes.SandOrange" Color="{StaticResource HastiUI.SolidColor.SandOrange}" />
     <SolidColorBrush x:Key="HastiUI.SolidColorBrushes.RedShell" Color="{StaticResource HastiUI.SolidColor.RedShell}" />
 
+    <SolidColorBrush x:Key="AttackDragon.SolidColorBrushes.MajestyDark" Color="{StaticResource AttackDragon.MejestyDark}" />
+    <SolidColorBrush x:Key="AttackDragon.SolidColorBrushes.MajestyGray" Color="{StaticResource AttackDragon.MajestyGray}"/>
+
 </ResourceDictionary>

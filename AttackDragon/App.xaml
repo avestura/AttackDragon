@@ -21,6 +21,7 @@
 
                 <!--#region Images-->
                 <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Assets/Images/MenuIcons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Assets/Images/MainIcons.xaml" />
                 <!--#endregion-->
 
                 <!--#region Strings-->
@@ -33,6 +34,9 @@
 
                 <!--#region Templates-->
                 <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Views/Templates/GeneralTemplates.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Views/Templates/Buttons/Global.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Views/Templates/Menus/Global.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/AttackDragon;component/Views/Templates/Menus/MenuItems/Global.xaml" />
                 <!--#endregion-->
 
             </ResourceDictionary.MergedDictionaries>

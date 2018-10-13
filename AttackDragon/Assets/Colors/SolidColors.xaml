@@ -12,4 +12,7 @@
     <Color x:Key="HastiUI.SolidColor.SandOrange">#D8AD6B</Color>
     <Color x:Key="HastiUI.SolidColor.RedShell">#F3816A</Color>
 
+    <Color x:Key="AttackDragon.MejestyDark">#2d3436</Color>
+    <Color x:Key="AttackDragon.MajestyGray">#dfe6e9</Color>
+
 </ResourceDictionary>

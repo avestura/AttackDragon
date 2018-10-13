@@ -8,4 +8,6 @@
     <FontFamily x:Key="Fonts.[FontName]">[FontName], pack://application:,,,/AttackDragon;component/Assets/Fonts/#[FontName]</FontFamily>
     -->
 
+    <FontFamily x:Key="Fonts.FiraCode">Fira Code, pack://application:,,,/AttackDragon;component/Assets/Fonts/FiraCode/#Fira Code</FontFamily>
+
 </ResourceDictionary>
