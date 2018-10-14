@@ -15,7 +15,7 @@ using System.Windows.Media;
 
 namespace AttackDragon.ViewModels
 {
-    class InspectorViewModel : INotifyPropertyChanged
+    public class InspectorViewModel : ViewModelBase
     {
 
         private string _assemblyName;
@@ -61,11 +61,5 @@ namespace AttackDragon.ViewModels
             set { _methods = value; OnPropertyChanged(); }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName]string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

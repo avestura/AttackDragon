@@ -9,24 +9,37 @@ using System.Windows.Media;
 
 namespace AttackDragon.ViewModels
 {
-    public class PropertyItem
+    public class PropertyItem : ViewModelBase
     {
-        public ImageSource ImageSource { get; set; }
+        private ImageSource _imageSource;
+        private MethodInfo _methodInfo;
+        private MemberItemType _memberItemType;
+
+        public ImageSource ImageSource {
+            get => _imageSource;
+            set { _imageSource = value; OnPropertyChanged(); }
+        }
 
         private string GenericSignatre => (MethodInfo.IsGenericMethod) ? $"<{string.Join(", ", MethodInfo.GetGenericArguments().Select(c => c.Name))}>" : "";
 
-        private string MethodSignature => (ItemType == ItemType.Method) ? $"({string.Join(", ", MethodInfo.GetParameters().Select(c => c.ParameterType))})" : "";
+        private string MethodSignature => (MemberItemType == MemberItemType.Method) ? $"({string.Join(", ", MethodInfo.GetParameters().Select(c => c.ParameterType))})" : "";
 
         public string Name => $"{MethodInfo.Name}{GenericSignatre}{MethodSignature}";
 
         public string StandardName => Name.MethodStandardName();
 
-        public MethodInfo MethodInfo { get; set; }
+        public MethodInfo MethodInfo {
+            get => _methodInfo;
+            set { _methodInfo = value; OnPropertyChanged(); }
+        }
 
-        public ItemType ItemType { get; set; }
+        public MemberItemType MemberItemType {
+            get => _memberItemType;
+            set { _memberItemType = value; OnPropertyChanged(); }
+        }
     }
 
-    public enum ItemType
+    public enum MemberItemType
     {
         Method, Event, Property
     }

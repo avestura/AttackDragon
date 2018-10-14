@@ -108,7 +108,7 @@ namespace AttackDragon.Views.Pages
                     {
                         ImageSource = VisualStudioImages.Property.Value,
                         MethodInfo = method,
-                        ItemType = ItemType.Property
+                        MemberItemType = MemberItemType.Property
                     });
                 }
             }
@@ -121,7 +121,7 @@ namespace AttackDragon.Views.Pages
                     {
                         ImageSource = VisualStudioImages.Event.Value,
                         MethodInfo = method,
-                        ItemType = ItemType.Event
+                        MemberItemType = MemberItemType.Event
                     });
                 }
             }
@@ -131,7 +131,7 @@ namespace AttackDragon.Views.Pages
                 {
                     ImageSource = VisualStudioImages.Method.Value,
                     MethodInfo = method,
-                    ItemType = ItemType.Method
+                    MemberItemType = MemberItemType.Method
                 });
             }
         }
@@ -141,7 +141,7 @@ namespace AttackDragon.Views.Pages
             if (MethodList.SelectedItem is PropertyItem item)
             {
                 ViewModel.MethodDetails =
-                    $"{item.ItemType.ToString()} {item.StandardName}\n\n" +
+                    $"{item.MemberItemType.ToString()} {item.StandardName}\n\n" +
                     $"IsGeneric: {item.MethodInfo.IsGenericMethod}\n" +
                     $"IsAbstract: {item.MethodInfo.IsAbstract}\n";
 

@@ -4,6 +4,7 @@
       xmlns:model="clr-namespace:AttackDragon.Models"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:controls="clr-namespace:AttackDragon.Views.Controls"
       xmlns:local="clr-namespace:AttackDragon.Views.Pages"
       xmlns:vm="clr-namespace:AttackDragon.ViewModels"
       mc:Ignorable="d"  Background="{StaticResource AttackDragon.SolidColorBrushes.MajestyDark}"
@@ -103,7 +104,7 @@
                           Grid.Row="1" ShowsPreview="True" Height="5"
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <Grid MinHeight="100" Grid.Row="2" Background="#FF2D2D2E">
-                <TextBlock Margin="5">&gt; Attack Dragon v0.1</TextBlock>
+                <controls:Console Background="#FF2D2D2E" Margin="5" />
             </Grid>
         </Grid>
         <StatusBar Foreground="{StaticResource AttackDragon.SolidColorBrushes.MajestyGray}" Background="#007ACC" Grid.Row="3" >
