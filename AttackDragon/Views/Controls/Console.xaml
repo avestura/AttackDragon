@@ -4,17 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:vm="clr-namespace:AttackDragon.ViewModels"
              xmlns:local="clr-namespace:AttackDragon.Views.Controls"
              mc:Ignorable="d" FontFamily="{StaticResource Fonts.FiraCode}"
              Background="#FF2D2D2E"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="MainLayout">
-        <ListView SelectionMode="Single"
+        <ListView SelectionMode="Extended"
+                  x:Name="Lv" x:FieldModifier="private"
+                  ItemsSource="{Binding}"
                   Background="{Binding RelativeSource={RelativeSource AncestorType=local:Console}}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Focusable" Value="false"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate DataType="{x:Type vm:ConsoleItemViewModel}">
                     <TextBlock>
-                        <TextBlock Foreground="Yellow" Text="AttackDragon$>"/> <TextBlock Foreground="{Binding TextColor}" Text="{Binding Text}" />
+                        <TextBlock Foreground="#808080" Text="AttackDragon$>"/> <TextBlock Foreground="{Binding TextColor}" Text="{Binding Text}" />
                     </TextBlock>
                 </DataTemplate>
             </ListView.ItemTemplate>

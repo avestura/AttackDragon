@@ -153,5 +153,28 @@ namespace AttackDragon.Views.Pages
             }
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Console.WriteComment($"Attack Dragon Version {Extensions.Extensions.GetVersion()}");
+        }
+
+        private void RunTestMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as MenuItem)?.Tag as PropertyItem;
+
+            if (item.MemberItemType == MemberItemType.Event)
+            {
+                Console.WriteError("Can not test Events.");
+            }
+            else if (item.MemberItemType == MemberItemType.Property)
+            {
+                Console.WriteWarning("Can not test properties in this version of AttackDragon, consider updating app if a newer version is avaliable.");
+            }
+            else
+            {
+                Console.WriteNormal($"Testing {item.Name}...");
+            }
+
+        }
     }
 }

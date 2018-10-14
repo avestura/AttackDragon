@@ -6,7 +6,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:controls="clr-namespace:AttackDragon.Views.Controls"
       xmlns:local="clr-namespace:AttackDragon.Views.Pages"
-      xmlns:vm="clr-namespace:AttackDragon.ViewModels"
+      xmlns:vm="clr-namespace:AttackDragon.ViewModels" Loaded="Page_Loaded"
       mc:Ignorable="d"  Background="{StaticResource AttackDragon.SolidColorBrushes.MajestyDark}"
       Foreground="{StaticResource AttackDragon.SolidColorBrushes.MajestyGray}"
       FontFamily="{StaticResource Fonts.FiraCode}" d:DataContext="{DynamicResource FakeViewModel}"
@@ -76,7 +76,7 @@
                 <ListView x:Name="MethodList" Grid.Column="2" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Methods}">
                     <ListView.Resources>
                         <ContextMenu x:Key="ItemContextMenu">
-                            <MenuItem Header="Run Test for..."  />
+                            <MenuItem Click="RunTestMenuItem_Click" Tag="{Binding}" Header="Run Test for..."  />
                             <Separator />
                             <MenuItem Header="Details..." />
                         </ContextMenu>
@@ -104,7 +104,7 @@
                           Grid.Row="1" ShowsPreview="True" Height="5"
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <Grid MinHeight="100" Grid.Row="2" Background="#FF2D2D2E">
-                <controls:Console Background="#FF2D2D2E" Margin="5" />
+                <controls:Console x:Name="Console" x:FieldModifier="private" Background="#FF2D2D2E" Margin="5" />
             </Grid>
         </Grid>
         <StatusBar Foreground="{StaticResource AttackDragon.SolidColorBrushes.MajestyGray}" Background="#007ACC" Grid.Row="3" >

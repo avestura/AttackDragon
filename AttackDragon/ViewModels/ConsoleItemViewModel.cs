@@ -35,6 +35,6 @@ namespace AttackDragon.ViewModels
 
     public enum ConsoleItemType
     {
-        NormalText, Comment, Warning, Error, Success, Primary
+        Normal, Comment, Warning, Error, Success, Primary
     }
 }
