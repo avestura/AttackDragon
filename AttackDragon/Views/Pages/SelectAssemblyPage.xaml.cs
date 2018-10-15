@@ -46,7 +46,7 @@ namespace AttackDragon.Views.Pages
                 try
                 {
                     var asm = Assembly.LoadFrom(dialog.FileName);
-                    ParentFrame.Navigate(new InspectorPage(asm));
+                    ParentFrame.Navigate(new InspectorPage(asm, ParentFrame));
                 }
                 catch(Exception ex)
                 {

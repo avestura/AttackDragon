@@ -34,9 +34,12 @@ namespace AttackDragon.Views.Pages
 
         private InspectorViewModel ViewModel { get; }
 
-        public InspectorPage(Assembly assembly)
+        private Frame ParentFrame { get; }
+
+        public InspectorPage(Assembly assembly, Frame parentFrame)
         {
             TargetAssembly = assembly;
+            ParentFrame = parentFrame;
             InitializeComponent();
 
             DataContext = ViewModel = new InspectorViewModel
@@ -175,6 +178,16 @@ namespace AttackDragon.Views.Pages
                 Console.WriteNormal($"Testing {item.Name}...");
             }
 
+        }
+
+        private void CloseFile_Click(object sender, RoutedEventArgs e)
+        {
+            ParentFrame.Navigate(new SelectAssemblyPage(ParentFrame));
+        }
+
+        private void ExitApplication_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.MainWindow.Close();
         }
     }
 }

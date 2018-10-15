@@ -28,9 +28,9 @@
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" Padding="2">
             <MenuItem Header="File">
-                <MenuItem Header="Close File" />
+                <MenuItem Click="CloseFile_Click" Header="Close File" />
                 <Separator/>
-                <MenuItem Header="Exit Application" />
+                <MenuItem Click="ExitApplication_Click" Header="Exit Application" />
             </MenuItem>
             <MenuItem Header="Tools">
 
@@ -76,7 +76,11 @@
                 <ListView x:Name="MethodList" Grid.Column="2" SelectionMode="Single" SelectionChanged="ListView_SelectionChanged" ItemsSource="{Binding Methods}">
                     <ListView.Resources>
                         <ContextMenu x:Key="ItemContextMenu">
-                            <MenuItem Click="RunTestMenuItem_Click" Tag="{Binding}" Header="Run Test for..."  />
+                            <MenuItem Click="RunTestMenuItem_Click" Tag="{Binding}" Header="Run Test for...">
+                                <MenuItem.Icon>
+                                    <Image Source="{StaticResource VisualStudio.RunTest}" />
+                                </MenuItem.Icon>
+                            </MenuItem>
                             <Separator />
                             <MenuItem Header="Details..." />
                         </ContextMenu>
