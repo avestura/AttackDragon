@@ -89,4 +89,18 @@
         </DrawingImage.Drawing>
     </DrawingImage>
 
+    <DrawingImage x:Key="VisualStudio.RunTest">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M8.7203,9.9238L14.8023,5.8688 6.0003,0.000799999999999912 6.0003,4.9998 2.0003,4.9998 2.0003,7.9998 3.0003,7.9998 3.0003,8.7228 1.0513,11.9708C0.6753,12.5978 0.6663,13.3508 1.0263,13.9858 1.3853,14.6208 2.0363,14.9998 2.7663,14.9998L8.2333,14.9998C8.9643,14.9998 9.6143,14.6208 9.9743,13.9858 10.3343,13.3498 10.3243,12.5968 9.9483,11.9708z" />
+                    <GeometryDrawing Brush="#FFEFEFF0" Geometry="F1M6,7L6,9.303 6.968,11 4.032,11 5,9.303 5,7z" />
+                    <GeometryDrawing Brush="#FF388934" Geometry="F1M7,5L7,1.869 13,5.869 8.194,9.073 8,8.734 8,8 9,8 9,5z" />
+                    <GeometryDrawing Brush="#FF424242" Geometry="F1M4.0322,11L5.0002,9.303 5.0002,7 6.0002,7 6.0002,9.303 6.9682,11z M7.0002,9L7.0002,7 8.0002,7 8.0002,6 3.0002,6 3.0002,7 4.0002,7 4.0002,9 1.9082,12.486C1.5092,13.152,1.9892,14,2.7662,14L8.2342,14C9.0112,14,9.4912,13.152,9.0912,12.486z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
 </ResourceDictionary>
