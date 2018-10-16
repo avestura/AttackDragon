@@ -23,7 +23,6 @@ namespace AttackDragon.Testing
                 return new TestResult
                 {
                     IsSuccess = true,
-                    Message = "Method successfully invoked.",
                     Result = result
                 };
             }
@@ -32,7 +31,7 @@ namespace AttackDragon.Testing
                 return new TestResult
                 {
                     IsSuccess = false,
-                    Message = $"Method invocation failed due to {ex.Message}"
+                    Exception = ex
                 };
             }
         }

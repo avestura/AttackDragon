@@ -12,6 +12,6 @@ namespace AttackDragon.Testing
 
         public object Result { get; set; }
 
-        public string Message { get; set; }
+        public Exception Exception { get; set; }
     }
 }

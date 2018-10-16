@@ -150,8 +150,9 @@ namespace AttackDragon.Views.Pages
                     $"IsGeneric: {item.MethodInfo.IsGenericMethod}\n" +
                     $"IsAbstract: {item.MethodInfo.IsAbstract}\n" +
                     $"IsStatic: {item.MethodInfo.IsStatic}\n" +
+                    $"IsVirtual: {item.MethodInfo.IsVirtual}\n" +
                     $"DeclaringType: {item.MethodInfo.DeclaringType}\n" +
-                    $"IsVirtual: {item.MethodInfo.IsVirtual}\n";
+                    $"ReflectedType: {item.MethodInfo.ReflectedType}";
 
                 ViewModel.MethodDetailsVisibility = Visibility.Visible;
             }
@@ -195,14 +196,14 @@ namespace AttackDragon.Views.Pages
                 {
                     try
                     {
-                        Console.WriteNormal($"Creating an instance of {method.DeclaringType.Name}, because method is not static...");
-                        instance = Activator.CreateInstance(method.DeclaringType);
-                        Console.WritePrimary($"Instance of {method.DeclaringType.Name} created.");
+                        Console.WriteNormal($"Creating an instance of {method.ReflectedType.Name}, because method is not static...");
+                        instance = Activator.CreateInstance(method.ReflectedType);
+                        Console.WritePrimary($"Instance of {method.ReflectedType.Name} created.");
                     }
                     catch
                     {
-                        Console.WriteError($"Attack Dragon was unable to create an instance of {method.DeclaringType.Name}.");
-                        Console.WriteError($"Can not call {method.Name} as method is not static and no instance of {method.DeclaringType.Name} is available.");
+                        Console.WriteError($"Attack Dragon was unable to create an instance of {method.ReflectedType.Name}.");
+                        Console.WriteError($"Can not call '{method.Name}' because method is not static and no instance of {method.ReflectedType.Name} is available.");
                         return;
                     }
                 }
@@ -233,13 +234,12 @@ namespace AttackDragon.Views.Pages
 
             if (result.IsSuccess)
             {
-                Console.WriteComment(result.Message);
-                Console.WriteSuccess($"{method.Name}({args?.Aggregate((i1, i2) => $"{i1 ?? "null"}, {i2 ?? "null"}")}) successfully returned {result.Result ?? "...emmm, nothing!"}.");
+                Console.WriteSuccess($"{method.Name}({args?.Aggregate((i1, i2) => $"{i1?.NormalizeView() ?? "null"}, {i2?.NormalizeView() ?? "null"}")}) successfully returned {result.Result ?? "...emmm, nothing!"}.");
             }
             else
             {
-                Console.WriteComment(result.Message);
-                Console.WriteError($"{method.Name}({args?.Aggregate((i1, i2) => $"{i1 ?? "null"}, {i2 ?? "null"}")}) thrown an exception.");
+                Console.WriteComment($"Method invoke failed: " + (result.Exception?.InnerException?.Message ?? result.Exception?.Message));
+                Console.WriteError($"{method.Name}({args?.Aggregate((i1, i2) => $"{i1?.NormalizeView() ?? "null"}, {i2?.NormalizeView() ?? "null"}")}) thrown an exception.");
 
             }
         }

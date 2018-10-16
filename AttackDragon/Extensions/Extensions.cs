@@ -22,5 +22,13 @@ namespace AttackDragon.Extensions
             FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
             return fileVersionInfo.ProductVersion;
         }
+
+        public static object NormalizeView(this object view)
+        {
+            if (view is string s) return $"\"{s}\"";
+            if (view is char c) return $"'{c}'";
+            return view;
+        }
     }
+
 }
