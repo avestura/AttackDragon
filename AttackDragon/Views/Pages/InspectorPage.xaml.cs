@@ -200,9 +200,10 @@ namespace AttackDragon.Views.Pages
                         instance = Activator.CreateInstance(method.ReflectedType);
                         Console.WritePrimary($"Instance of {method.ReflectedType.Name} created.");
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                        Console.WriteError($"Attack Dragon was unable to create an instance of {method.ReflectedType.Name}.");
+                        Console.WriteError($"Attack Dragon was unable to create an instance of {method.ReflectedType.Name}\n" +
+                            $"Error: {ex.InnerException?.Message ?? ex.Message}");
                         Console.WriteError($"Can not call '{method.Name}' because method is not static and no instance of {method.ReflectedType.Name} is available.");
                         return;
                     }
@@ -234,7 +235,7 @@ namespace AttackDragon.Views.Pages
 
             if (result.IsSuccess)
             {
-                Console.WriteSuccess($"{method.Name}({args?.Aggregate((i1, i2) => $"{i1?.NormalizeView() ?? "null"}, {i2?.NormalizeView() ?? "null"}")}) successfully returned {result.Result ?? "...emmm, nothing!"}.");
+                Console.WriteSuccess($"{method.Name}({args?.Aggregate((i1, i2) => $"{i1?.NormalizeView() ?? "null"}, {i2?.NormalizeView() ?? "null"}")}) successfully returned {result.Result?.NormalizeView() ?? "...emmm, nothing!"}.");
             }
             else
             {
