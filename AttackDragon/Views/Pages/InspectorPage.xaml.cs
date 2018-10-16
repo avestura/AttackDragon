@@ -146,7 +146,7 @@ namespace AttackDragon.Views.Pages
             {
                 ViewModel.MethodDetails =
                     $"{item.MemberItemType.ToString()} {item.StandardName}\n\n" +
-                    $"Return Type: {item.MethodInfo.ReturnType.Name}" +
+                    $"Return Type: {item.MethodInfo.ReturnType.Name}\n" +
                     $"IsGeneric: {item.MethodInfo.IsGenericMethod}\n" +
                     $"IsAbstract: {item.MethodInfo.IsAbstract}\n" +
                     $"IsStatic: {item.MethodInfo.IsStatic}\n" +
