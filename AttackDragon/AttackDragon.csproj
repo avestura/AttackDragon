@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -78,7 +79,10 @@
     </Compile>
     <Compile Include="Engines\CalculationEngine.cs" />
     <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Models\InspectorTreeItem.cs" />
+    <Compile Include="Testing\AttackDragon.cs" />
+    <Compile Include="Testing\TestResult.cs" />
     <Compile Include="ViewModels\ConsoleItemViewModel.cs" />
     <Compile Include="ViewModels\InspectorViewModel.cs" />
     <Compile Include="ViewModels\PropertyItem.cs" />

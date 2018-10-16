@@ -1,4 +1,5 @@
-﻿using AttackDragon.Views.Animations;
+﻿using AttackDragon.Testing;
+using AttackDragon.Views.Animations;
 using AttackDragon.Views.Pages;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,7 @@ namespace AttackDragon
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this_Frame.Navigate(new SelectAssemblyPage(this_Frame));
+
         }
     }
 }

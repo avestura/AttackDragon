@@ -1,6 +1,7 @@
 ﻿using AttackDragon.Assets.Images;
 using AttackDragon.Extensions;
 using AttackDragon.Models;
+using AttackDragon.Testing;
 using AttackDragon.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -145,8 +146,12 @@ namespace AttackDragon.Views.Pages
             {
                 ViewModel.MethodDetails =
                     $"{item.MemberItemType.ToString()} {item.StandardName}\n\n" +
+                    $"Return Type: {item.MethodInfo.ReturnType.Name}" +
                     $"IsGeneric: {item.MethodInfo.IsGenericMethod}\n" +
-                    $"IsAbstract: {item.MethodInfo.IsAbstract}\n";
+                    $"IsAbstract: {item.MethodInfo.IsAbstract}\n" +
+                    $"IsStatic: {item.MethodInfo.IsStatic}\n" +
+                    $"DeclaringType: {item.MethodInfo.DeclaringType}\n" +
+                    $"IsVirtual: {item.MethodInfo.IsVirtual}\n";
 
                 ViewModel.MethodDetailsVisibility = Visibility.Visible;
             }
@@ -175,9 +180,68 @@ namespace AttackDragon.Views.Pages
             }
             else
             {
+
+                var method = item.MethodInfo;
+
+                if(method.IsGenericMethod || method.IsAbstract)
+                {
+                    Console.WriteError($"Can not test generic or abstract method {method.Name}");
+                    return;
+                }
+
                 Console.WriteNormal($"Testing {item.Name}...");
+                object instance = null;
+                if (!method.IsStatic)
+                {
+                    try
+                    {
+                        Console.WriteNormal($"Creating an instance of {method.DeclaringType.Name}, because method is not static...");
+                        instance = Activator.CreateInstance(method.DeclaringType);
+                        Console.WritePrimary($"Instance of {method.DeclaringType.Name} created.");
+                    }
+                    catch
+                    {
+                        Console.WriteError($"Attack Dragon was unable to create an instance of {method.DeclaringType.Name}.");
+                        Console.WriteError($"Can not call {method.Name} as method is not static and no instance of {method.DeclaringType.Name} is available.");
+                        return;
+                    }
+                }
+                var parameters = method.GetParameters();
+                var attackDragon = new Testing.AttackDragon();
+
+                var possibleCalls = attackDragon.GetPossibleCalls(parameters.Select(para => para.ParameterType).ToArray());
+                if (possibleCalls.Count == 0)
+                {
+                    RunMethodInConsole(attackDragon, method, null, instance);
+                }
+                else
+                {
+                    foreach (object[] args in possibleCalls)
+                    {
+                        RunMethodInConsole(attackDragon, method, args, instance);
+                    }
+                }
             }
 
+        }
+
+        public void RunMethodInConsole(Testing.AttackDragon attackDragon, MethodInfo method, object[] args, object instance)
+        {
+            TestResult result = (method.IsStatic) ?
+                            attackDragon.TestMethod(method, args) :
+                            attackDragon.TestMethod(method, args, instance);
+
+            if (result.IsSuccess)
+            {
+                Console.WriteComment(result.Message);
+                Console.WriteSuccess($"{method.Name}({args?.Aggregate((i1, i2) => $"{i1 ?? "null"}, {i2 ?? "null"}")}) successfully returned {result.Result ?? "...emmm, nothing!"}.");
+            }
+            else
+            {
+                Console.WriteComment(result.Message);
+                Console.WriteError($"{method.Name}({args?.Aggregate((i1, i2) => $"{i1 ?? "null"}, {i2 ?? "null"}")}) thrown an exception.");
+
+            }
         }
 
         private void CloseFile_Click(object sender, RoutedEventArgs e)
